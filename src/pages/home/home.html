@@ -1,5 +1,5 @@
 <ion-header>
-  
+
   <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -12,50 +12,18 @@
 <ion-content class="card-brackground-image">
 
   <ion-grid>
-    <ion-row>
+
+
+    <ion-row  *ngFor="let produto of produtos">
+
       <ion-col>
-
-        <ion-card (click)="produtoSelecionado()">
-          <ion-img width="100%" height="120" src="assets/imgs/peca01.jpg"></ion-img>
-          <h5 class="card-title">Vestido</h5>
-          <h6 class="card-subtitle">R$ 100,00</h6>
-        </ion-card>
-
-      </ion-col>
-      <ion-col width-50>
         <ion-card>
-          <ion-img width="100%" height="120" src="assets/imgs/peca02.jpg"></ion-img>
-          <h5 class="card-title">Vestido</h5>
-          <h6 class="card-subtitle">R$ 100,00</h6>
+          <ion-img width="100%" height="120" src="{{produto.imagem}}"></ion-img>
+          <h5 class="card-title">{{produto.nome}}</h5>
+          <h6 class="card-subtitle">{{produto.preco}}</h6>
         </ion-card>
       </ion-col>
-    </ion-row>
 
-    <ion-row wrap> 
-      <ion-col width-50>
-        <ion-card>
-          <ion-img width="100%" height="120" src="assets/imgs/peca03.jpg"></ion-img>
-          <ion-card-content>
-            <ion-card-title>
-              <p></p>
-            </ion-card-title>
-            <p>
-            </p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col width-50>
-        <ion-card>
-          <ion-img width="100%" height="120" src="assets/imgs/peca04.jpg"></ion-img>
-          <ion-card-content>
-            <ion-card-title>
-              <p></p>
-            </ion-card-title>
-            <p>
-            </p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
     </ion-row>
 
 
