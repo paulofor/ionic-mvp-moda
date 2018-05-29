@@ -6,6 +6,8 @@ export interface ProdutoInterface {
   "nome"?: string;
   "imagem"?: string;
   "preco"?: number;
+  "clienteId"?: number;
+  "pedidoId"?: number;
 }
 
 export class Produto implements ProdutoInterface {
@@ -13,6 +15,8 @@ export class Produto implements ProdutoInterface {
   "nome": string;
   "imagem": string;
   "preco": number;
+  "clienteId": number;
+  "pedidoId": number;
   constructor(data?: ProdutoInterface) {
     Object.assign(this, data);
   }
@@ -60,6 +64,14 @@ export class Produto implements ProdutoInterface {
         },
         "preco": {
           name: 'preco',
+          type: 'number'
+        },
+        "clienteId": {
+          name: 'clienteId',
+          type: 'number'
+        },
+        "pedidoId": {
+          name: 'pedidoId',
           type: 'number'
         },
       },

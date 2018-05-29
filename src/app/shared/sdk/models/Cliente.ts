@@ -1,4 +1,7 @@
 /* tslint:disable */
+import {
+  Produto
+} from '../index';
 
 declare var Object: any;
 export interface ClienteInterface {
@@ -8,6 +11,7 @@ export interface ClienteInterface {
   "senha"?: string;
   "cor_primaria"?: string;
   "logo"?: string;
+  produtos?: Produto[];
 }
 
 export class Cliente implements ClienteInterface {
@@ -17,6 +21,7 @@ export class Cliente implements ClienteInterface {
   "senha": string;
   "cor_primaria": string;
   "logo": string;
+  produtos: Produto[];
   constructor(data?: ClienteInterface) {
     Object.assign(this, data);
   }
@@ -76,6 +81,14 @@ export class Cliente implements ClienteInterface {
         },
       },
       relations: {
+        produtos: {
+          name: 'produtos',
+          type: 'Produto[]',
+          model: 'Produto',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'clienteId'
+        },
       }
     }
   }

@@ -4,6 +4,7 @@ import { User } from '../../models/User';
 import { Message } from '../../models/Message';
 import { Cliente } from '../../models/Cliente';
 import { Produto } from '../../models/Produto';
+import { Pedido } from '../../models/Pedido';
 
 export interface Models { [name: string]: any }
 
@@ -15,6 +16,7 @@ export class SDKModels {
     Message: Message,
     Cliente: Cliente,
     Produto: Produto,
+    Pedido: Pedido,
     
   };
 

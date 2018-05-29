@@ -10,16 +10,16 @@ import { ErrorHandler } from '../core/error.service';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
-import { Cliente } from '../../models/Cliente';
+import { Pedido } from '../../models/Pedido';
 import { SocketConnection } from '../../sockets/socket.connections';
 import { Produto } from '../../models/Produto';
 
 
 /**
- * Api services for the `Cliente` model.
+ * Api services for the `Pedido` model.
  */
 @Injectable()
-export class ClienteApi extends BaseLoopBackApi {
+export class PedidoApi extends BaseLoopBackApi {
 
   constructor(
     @Inject(HttpClient) protected http: HttpClient,
@@ -34,7 +34,7 @@ export class ClienteApi extends BaseLoopBackApi {
   /**
    * Find a related item by id for produtos.
    *
-   * @param {any} id cliente id
+   * @param {any} id pedido id
    *
    * @param {any} fk Foreign key for produtos
    *
@@ -44,13 +44,13 @@ export class ClienteApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `Cliente` object.)
+   * This usually means the response is a `Pedido` object.)
    * </em>
    */
   public findByIdProdutos(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/clientes/:id/produtos/:fk";
+    "/pedidos/:id/produtos/:fk";
     let _routeParams: any = {
       id: id,
       fk: fk
@@ -64,7 +64,7 @@ export class ClienteApi extends BaseLoopBackApi {
   /**
    * Delete a related item by id for produtos.
    *
-   * @param {any} id cliente id
+   * @param {any} id pedido id
    *
    * @param {any} fk Foreign key for produtos
    *
@@ -77,7 +77,7 @@ export class ClienteApi extends BaseLoopBackApi {
   public destroyByIdProdutos(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/clientes/:id/produtos/:fk";
+    "/pedidos/:id/produtos/:fk";
     let _routeParams: any = {
       id: id,
       fk: fk
@@ -91,7 +91,7 @@ export class ClienteApi extends BaseLoopBackApi {
   /**
    * Update a related item by id for produtos.
    *
-   * @param {any} id cliente id
+   * @param {any} id pedido id
    *
    * @param {any} fk Foreign key for produtos
    *
@@ -105,13 +105,13 @@ export class ClienteApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `Cliente` object.)
+   * This usually means the response is a `Pedido` object.)
    * </em>
    */
   public updateByIdProdutos(id: any, fk: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PUT";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/clientes/:id/produtos/:fk";
+    "/pedidos/:id/produtos/:fk";
     let _routeParams: any = {
       id: id,
       fk: fk
@@ -125,9 +125,9 @@ export class ClienteApi extends BaseLoopBackApi {
   }
 
   /**
-   * Queries produtos of cliente.
+   * Queries produtos of pedido.
    *
-   * @param {any} id cliente id
+   * @param {any} id pedido id
    *
    * @param {object} filter 
    *
@@ -137,13 +137,13 @@ export class ClienteApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `Cliente` object.)
+   * This usually means the response is a `Pedido` object.)
    * </em>
    */
   public getProdutos(id: any, filter: LoopBackFilter = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/clientes/:id/produtos";
+    "/pedidos/:id/produtos";
     let _routeParams: any = {
       id: id
     };
@@ -157,7 +157,7 @@ export class ClienteApi extends BaseLoopBackApi {
   /**
    * Creates a new instance in produtos of this model.
    *
-   * @param {any} id cliente id
+   * @param {any} id pedido id
    *
    * @param {object} data Request data.
    *
@@ -169,13 +169,13 @@ export class ClienteApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `Cliente` object.)
+   * This usually means the response is a `Pedido` object.)
    * </em>
    */
   public createProdutos(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/clientes/:id/produtos";
+    "/pedidos/:id/produtos";
     let _routeParams: any = {
       id: id
     };
@@ -190,7 +190,7 @@ export class ClienteApi extends BaseLoopBackApi {
   /**
    * Deletes all produtos of this model.
    *
-   * @param {any} id cliente id
+   * @param {any} id pedido id
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -201,7 +201,7 @@ export class ClienteApi extends BaseLoopBackApi {
   public deleteProdutos(id: any, customHeaders?: Function): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/clientes/:id/produtos";
+    "/pedidos/:id/produtos";
     let _routeParams: any = {
       id: id
     };
@@ -212,9 +212,9 @@ export class ClienteApi extends BaseLoopBackApi {
   }
 
   /**
-   * Counts produtos of cliente.
+   * Counts produtos of pedido.
    *
-   * @param {any} id cliente id
+   * @param {any} id pedido id
    *
    * @param {object} where Criteria to match model instances
    *
@@ -229,7 +229,7 @@ export class ClienteApi extends BaseLoopBackApi {
   public countProdutos(id: any, where: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/clientes/:id/produtos/count";
+    "/pedidos/:id/produtos/count";
     let _routeParams: any = {
       id: id
     };
@@ -253,13 +253,13 @@ export class ClienteApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `Cliente` object.)
+   * This usually means the response is a `Pedido` object.)
    * </em>
    */
   public patchOrCreate(data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/clientes";
+    "/pedidos";
     let _routeParams: any = {};
     let _postBody: any = {
       data: data
@@ -272,7 +272,7 @@ export class ClienteApi extends BaseLoopBackApi {
   /**
    * Patch attributes for a model instance and persist it into the data source.
    *
-   * @param {any} id cliente id
+   * @param {any} id pedido id
    *
    * @param {object} data Request data.
    *
@@ -284,13 +284,13 @@ export class ClienteApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `Cliente` object.)
+   * This usually means the response is a `Pedido` object.)
    * </em>
    */
   public patchAttributes(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/clientes/:id";
+    "/pedidos/:id";
     let _routeParams: any = {
       id: id
     };
@@ -305,7 +305,7 @@ export class ClienteApi extends BaseLoopBackApi {
   /**
    * Creates a new instance in produtos of this model.
    *
-   * @param {any} id cliente id
+   * @param {any} id pedido id
    *
    * @param {object} data Request data.
    *
@@ -317,13 +317,13 @@ export class ClienteApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `Cliente` object.)
+   * This usually means the response is a `Pedido` object.)
    * </em>
    */
   public createManyProdutos(id: any, data: any[] = [], customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/clientes/:id/produtos";
+    "/pedidos/:id/produtos";
     let _routeParams: any = {
       id: id
     };
@@ -337,9 +337,9 @@ export class ClienteApi extends BaseLoopBackApi {
 
   /**
    * The name of the model represented by this $resource,
-   * i.e. `Cliente`.
+   * i.e. `Pedido`.
    */
   public getModelName() {
-    return "Cliente";
+    return "Pedido";
   }
 }
