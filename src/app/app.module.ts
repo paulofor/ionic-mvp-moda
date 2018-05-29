@@ -18,11 +18,14 @@ import { SDKModels } from './shared/sdk/services/custom/SDKModels';
 import { LoopBackAuth } from './shared/sdk/services/core/auth.service';
 import { InternalStorage } from './shared/sdk/storage/storage.swaps';
 
+import {DetalheProdutoPage} from '../pages/detalhe-produto/detalhe-produto';
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    DetalheProdutoPage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import { InternalStorage } from './shared/sdk/storage/storage.swaps';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    DetalheProdutoPage
   ],
   providers: [
     StatusBar,

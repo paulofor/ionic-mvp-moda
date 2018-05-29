@@ -6,13 +6,19 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>detalheProduto</ion-title>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{produto.nome}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding >
+  <ion-card>
+      <ion-img width="100%" height="320" src="{{produto.imagem}}"></ion-img>
+  </ion-card>
 
 </ion-content>
