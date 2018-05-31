@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule , LOCALE_ID} from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
@@ -18,14 +18,25 @@ import { SDKModels } from './shared/sdk/services/custom/SDKModels';
 import { LoopBackAuth } from './shared/sdk/services/core/auth.service';
 import { InternalStorage } from './shared/sdk/storage/storage.swaps';
 
-import {DetalheProdutoPage} from '../pages/detalhe-produto/detalhe-produto';
+import { DetalheProdutoPage } from '../pages/detalhe-produto/detalhe-produto';
+import { WelcomePage } from '../pages/welcome/welcome';
+import { LoginPage } from '../pages/login/login';
+import { SignupPage } from '../pages/signup/signup';
+
+import localePtBr from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localePtBr);
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    DetalheProdutoPage
+    DetalheProdutoPage,
+    WelcomePage,
+    LoginPage,
+    SignupPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +48,10 @@ import {DetalheProdutoPage} from '../pages/detalhe-produto/detalhe-produto';
     MyApp,
     HomePage,
     ListPage,
-    DetalheProdutoPage
+    DetalheProdutoPage,
+    WelcomePage,
+    LoginPage,
+    SignupPage
   ],
   providers: [
     StatusBar,
@@ -49,7 +63,8 @@ import {DetalheProdutoPage} from '../pages/detalhe-produto/detalhe-produto';
     SocketDriver,
     SDKModels,
     LoopBackAuth,
-    InternalStorage
+    InternalStorage,
+    { provide: LOCALE_ID, useValue: 'pt' } 
   ]
 })
 export class AppModule {}
