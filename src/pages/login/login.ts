@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { User } from '../../app/shared/sdk';
 
 /**
  * Generated class for the LoginPage page.
@@ -15,6 +16,8 @@ import { HomePage } from '../home/home';
   templateUrl: 'login.html',
 })
 export class LoginPage {
+
+  usuario : User;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
