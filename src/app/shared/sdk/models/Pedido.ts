@@ -1,19 +1,24 @@
 /* tslint:disable */
 import {
-  Produto
+  Produto,
+  ItemPedido
 } from '../index';
 
 declare var Object: any;
 export interface PedidoInterface {
   "id"?: number;
   "data_inicio"?: Date;
+  "usuarioAppId"?: number;
   produtos?: Produto[];
+  itemPedidos?: ItemPedido[];
 }
 
 export class Pedido implements PedidoInterface {
   "id": number;
   "data_inicio": Date;
+  "usuarioAppId": number;
   produtos: Produto[];
+  itemPedidos: ItemPedido[];
   constructor(data?: PedidoInterface) {
     Object.assign(this, data);
   }
@@ -55,12 +60,24 @@ export class Pedido implements PedidoInterface {
           name: 'data_inicio',
           type: 'Date'
         },
+        "usuarioAppId": {
+          name: 'usuarioAppId',
+          type: 'number'
+        },
       },
       relations: {
         produtos: {
           name: 'produtos',
           type: 'Produto[]',
           model: 'Produto',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'pedidoId'
+        },
+        itemPedidos: {
+          name: 'itemPedidos',
+          type: 'ItemPedido[]',
+          model: 'ItemPedido',
           relationType: 'hasMany',
                   keyFrom: 'id',
           keyTo: 'pedidoId'

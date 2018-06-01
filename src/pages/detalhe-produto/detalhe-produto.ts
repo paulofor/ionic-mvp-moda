@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 
 import { Produto } from '../../app/shared/sdk/models/Produto';
 import { ProdutoApi } from '../../app/shared/sdk/services/custom/Produto';
@@ -20,12 +20,25 @@ export class DetalheProdutoPage {
 
   produto : Produto;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+            private toastCtrl: ToastController) {
     this.produto = navParams.get('item');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetalheProdutoPage');
+  }
+
+  adicionaProduto() {
+    this.toastCtrl.create({
+      message: 'Adicionado ao carrinho ' + this.produto.nome + ' com sucesso',
+      position: 'middle',
+      duration: 3000
+    }).present();
+  }
+
+  recuperaPedido() {
+    
   }
 
 }

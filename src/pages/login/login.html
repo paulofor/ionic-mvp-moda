@@ -6,18 +6,18 @@
 -->
 <ion-content padding>
   <ion-list>
-  
-    <ion-item>
-      <ion-label fixed>Username</ion-label>
-      <ion-input type="text" value=""></ion-input>
-    </ion-item>
-  
-    <ion-item>
-      <ion-label fixed>Password</ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
-  
-    <button ion-button block color="primary-login" (click)="login()">Login</button>
-  
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <ion-item>
+        <ion-label fixed>Usuário</ion-label>
+        <ion-input type="text" formControlName="login"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>Senha</ion-label>
+        <ion-input type="password" formControlName="senha"></ion-input>
+      </ion-item>
+
+      <button ion-button block color="primary-login" type="submit">Entrar</button>
+    </form>
   </ion-list>
-  </ion-content>
+</ion-content>

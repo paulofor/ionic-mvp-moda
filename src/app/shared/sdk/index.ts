@@ -53,6 +53,8 @@ import { MessageApi } from './services/custom/Message';
 import { ClienteApi } from './services/custom/Cliente';
 import { ProdutoApi } from './services/custom/Produto';
 import { PedidoApi } from './services/custom/Pedido';
+import { UsuarioAppApi } from './services/custom/UsuarioApp';
+import { ItemPedidoApi } from './services/custom/ItemPedido';
 /**
 * @module SDKBrowserModule
 * @description
@@ -88,6 +90,8 @@ export class SDKBrowserModule {
         ClienteApi,
         ProdutoApi,
         PedidoApi,
+        UsuarioAppApi,
+        ItemPedidoApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser },
         { provide: SocketDriver, useClass: SocketBrowser }

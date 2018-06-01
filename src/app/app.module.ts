@@ -25,6 +25,8 @@ import { SignupPage } from '../pages/signup/signup';
 
 import localePtBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
+import { IonicStorageModule } from '@ionic/storage';
+import { UsuarioAppApi } from '../app/shared/sdk/services/custom/UsuarioApp';
 
 registerLocaleData(localePtBr);
 
@@ -41,7 +43,8 @@ registerLocaleData(localePtBr);
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -58,6 +61,7 @@ registerLocaleData(localePtBr);
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProdutoApi,
+    UsuarioAppApi,
     HttpClient, 
     SocketConnection  , 
     SocketDriver,
