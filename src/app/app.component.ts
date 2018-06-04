@@ -14,9 +14,9 @@ import { TesteGridPage } from '../pages/teste-grid/teste-grid';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  //rootPage: any = HomePage;
+  rootPage: any = HomePage;
   //rootPage: any = WelcomePage;
-  rootPage: any = TesteGridPage;
+  //rootPage: any = TesteGridPage;
 
 
   pages: Array<{title: string, component: any}>;

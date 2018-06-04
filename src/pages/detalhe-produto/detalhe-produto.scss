@@ -6,24 +6,31 @@ page-detalhe-produto {
     }
     .quadro {
         height: 100%;
-        border: 2px solid black;
+ 
         padding: 0px;
     }
     .linha30 {
         height: 30%;
-        background-color: blue;
+        
     }
     .linha20 {
         height: 20%;
-        background-color: violet;
+        
     }
     .linha10 {
         height: 10%;
-        background-color: rgb(143, 175, 150);
+    }
+    .linha25 {
+        height: 25%;
+    }
+    .linha15 {
+        height: 15%;
     }
     .linha50 {
         height: 50%;
-        background-color: yellow;
+    }
+    .linha60 {
+        height: 60%;
     }
     .noFundo {
         bottom: 0;
