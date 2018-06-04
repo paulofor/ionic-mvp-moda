@@ -1,33 +1,27 @@
-page-detalhe-produto {
-
-    .botao-compra {
-        position: fixed;
-        bottom: 20px;
-    }
+page-teste-grid {
     .quadro {
         height: 100%;
+        
         border: 2px solid black;
         padding: 0px;
     }
     .linha30 {
         height: 30%;
         background-color: blue;
+        
     }
     .linha20 {
         height: 20%;
         background-color: violet;
-    }
-    .linha10 {
-        height: 10%;
-        background-color: rgb(143, 175, 150);
+        
     }
     .linha50 {
         height: 50%;
         background-color: yellow;
+        
     }
     .noFundo {
+       
         bottom: 0;
     }
 }
-
-

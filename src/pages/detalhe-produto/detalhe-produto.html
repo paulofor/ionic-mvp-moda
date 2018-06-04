@@ -17,33 +17,30 @@
 </ion-content>
 -->
 
-<ion-content no-bounce padding>
+<ion-content no-bounce >
 
-  <ion-grid >
-    <ion-row>
-      <ion-col>
+  <ion-grid class="quadro">
+    <ion-row class="linha50">
+      <ion-col >
         <img src="{{produto.imagem}}" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
       </ion-col>
     </ion-row>
 
-    <ion-row>
-      <ion-col>
+    <ion-row class="linha30">
+      <ion-col >
         <h4 style="color:#000000;text-align:center;">
           {{produto.nome}}
         </h4>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col>
         <h4 style="color:#000000;text-align:center;">
           {{produto.preco | currency : 'R$':'code'}}
         </h4>
       </ion-col>
     </ion-row>
 
-    <ion-row>
-      <ion-col>
+
+
+    <ion-row  class="linha20">
+      <ion-col  >
         <button ion-button round color="royal" (click)="adicionaProduto()" block style="font-weight:500;margin-top: 50px">
           Adicionar ao Carrinho
         </button>
