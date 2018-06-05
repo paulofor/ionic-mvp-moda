@@ -31,8 +31,8 @@ export class DetalheProdutoPage {
 
   adicionaProduto() {
     this.toastCtrl.create({
-      message: 'Adicionado ao carrinho ' + this.produto.nome + ' com sucesso',
-      position: 'middle',
+      message: 'Produto adicionando ao carrinho',
+      position: 'bottom',
       duration: 3000
     }).present();
   }

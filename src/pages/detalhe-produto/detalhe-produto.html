@@ -23,20 +23,22 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>D Morena</ion-title>
+
+  
   </ion-navbar>
 
 </ion-header>
-<ion-content no-bounce >
+<ion-content no-bounce>
 
   <ion-grid class="quadro">
     <ion-row class="linha60">
-      <ion-col >
+      <ion-col>
         <img src="{{produto.imagem}}" style="display:block;width:100%;height:100%;margin-left:auto;margin-right:auto;" />
       </ion-col>
     </ion-row>
 
     <ion-row class="linha25">
-      <ion-col >
+      <ion-col>
         <h4 style="color:#000000;text-align:center;">
           {{produto.nome}}
         </h4>
@@ -48,8 +50,8 @@
 
 
 
-    <ion-row  class="linha15">
-      <ion-col  >
+    <ion-row class="linha15">
+      <ion-col>
         <button ion-button round color="royal" (click)="adicionaProduto()" block style="font-weight:500;">
           Adicionar ao Carrinho
         </button>
