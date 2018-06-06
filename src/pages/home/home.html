@@ -6,9 +6,10 @@
     </button>
     <ion-title>D Morena</ion-title>
     <ion-buttons end>
-      <button id="cart-btn" ion-button icon-only >
-        <ion-icon name="cart"></ion-icon>
-        <ion-badge id="cart-badge">4</ion-badge>
+      <button id="notification-button" ion-button icon-only>
+       <ion-icon name="cart">
+          <ion-badge id="notifications-badge" color="accent">4</ion-badge>
+        </ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -18,7 +19,7 @@
 <ion-content class="card-brackground-image">
 
   <ion-grid>
-    <ion-row  >
+    <ion-row>
       <ion-col col-6 *ngFor="let produto of produtos">
         <ion-card (click)="produtoSelecionado($event,produto)">
           <ion-img width="100%" height="120" src="{{produto.imagem}}"></ion-img>
