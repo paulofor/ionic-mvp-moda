@@ -28,6 +28,8 @@ import localePtBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { IonicStorageModule } from '@ionic/storage';
 import { UsuarioAppApi } from '../app/shared/sdk/services/custom/UsuarioApp';
+import { PedidoApi } from '../app/shared/sdk/services/custom/Pedido';
+
 
 registerLocaleData(localePtBr);
 
@@ -71,7 +73,8 @@ registerLocaleData(localePtBr);
     SDKModels,
     LoopBackAuth,
     InternalStorage,
-    { provide: LOCALE_ID, useValue: 'pt' } 
+    { provide: LOCALE_ID, useValue: 'pt' } ,
+    PedidoApi
   ]
 })
 export class AppModule {}
