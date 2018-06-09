@@ -20,9 +20,12 @@ export class HomePage {
 
   }
 
+  ionViewWillEnter() {
+    this.carregaQtdePedido();
+  }
+
   ngOnInit() {
     this.carregaListaProduto();
-    this.carregaQtdePedido();
   }
 
   carregaListaProduto() {
