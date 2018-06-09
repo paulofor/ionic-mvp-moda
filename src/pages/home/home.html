@@ -8,7 +8,7 @@
     <ion-buttons end>
       <button id="notification-button" ion-button icon-only>
        <ion-icon name="cart">
-          <ion-badge id="notifications-badge" color="accent">{{total}}</ion-badge>
+          <ion-badge *ngIf="total > 0" id="notifications-badge" color="accent">{{total}}</ion-badge>
         </ion-icon>
       </button>
     </ion-buttons>

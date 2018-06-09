@@ -7,6 +7,7 @@ import { Storage  } from '@ionic/storage';
 import { Pedido } from '../../app/shared/sdk';
 
 import { UsuarioAppApi } from '../../app/shared/sdk/services/custom/UsuarioApp';
+import { PedidoApi } from '../../app/shared/sdk/services/custom/Pedido';
 
 /**
  * Generated class for the LoginPage page.
@@ -24,10 +25,11 @@ export class LoginPage {
 
   usuario : User;
   loginForm: FormGroup;
+  pedido:Pedido;
 
   constructor(public navCtrl: NavController, public navParams: NavParams
               , private formBuilder: FormBuilder, private storage: Storage,
-              private usuarioAppSrv: UsuarioAppApi) {
+              private usuarioAppSrv: UsuarioAppApi, private pedidoSrv: PedidoApi) {
     this.loginForm = this.formBuilder.group({
       login : '',
       senha : ''
@@ -35,7 +37,7 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    //console.log('ionViewDidLoad LoginPage');
   }
 
   onSubmit(){
@@ -45,20 +47,41 @@ export class LoginPage {
     this.usuario.id = 1;
     this.storage.set('user',this.usuario);
     console.log("form:" , this.usuario);
-    this.criaPedido();
+    this.verificaPedidoAberto();
+  }
+
+  mudaTela() {
     this.navCtrl.push(HomePage, {}, {animate: false});
   }
 
 
   criaPedido() {
+    console.log('Cria Pedido');
     let pedido : Pedido = new Pedido();
+    pedido.aberto = true;
     pedido.usuarioAppId = this.usuario.id;
     pedido.data_inicio = new Date();
     this.usuarioAppSrv.createPedidos(this.usuario.id, pedido, (err,obj) => {
       console.log("Erro:" + err.message);
+      this.mudaTela();
     }).subscribe((e: any) => {
       console.log(JSON.stringify(e));
     });
+  }
+
+  verificaPedidoAberto() {
+    // Identificar para o usuario corrente qual pedido esta aberto.
+    console.log("Verificando Pedido - usuarioId = " , this.usuario.id);
+    this.pedidoSrv.find({where: {aberto:true,usuarioAppId:this.usuario.id}})
+      .subscribe((resultado : Pedido[]) => {
+          console.log("Pedido: " , resultado);
+          if (resultado.length>0) {
+            this.pedido = resultado[0];
+            this.mudaTela();
+          } else {
+            this.criaPedido();
+          }
+      })
   }
   
 }

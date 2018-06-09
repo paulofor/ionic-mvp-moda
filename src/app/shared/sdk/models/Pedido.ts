@@ -8,6 +8,7 @@ declare var Object: any;
 export interface PedidoInterface {
   "id"?: number;
   "data_inicio"?: Date;
+  "aberto"?: boolean;
   "usuarioAppId"?: number;
   produtos?: Produto[];
   itemPedidos?: ItemPedido[];
@@ -16,6 +17,7 @@ export interface PedidoInterface {
 export class Pedido implements PedidoInterface {
   "id": number;
   "data_inicio": Date;
+  "aberto": boolean;
   "usuarioAppId": number;
   produtos: Produto[];
   itemPedidos: ItemPedido[];
@@ -59,6 +61,10 @@ export class Pedido implements PedidoInterface {
         "data_inicio": {
           name: 'data_inicio',
           type: 'Date'
+        },
+        "aberto": {
+          name: 'aberto',
+          type: 'boolean'
         },
         "usuarioAppId": {
           name: 'usuarioAppId',
