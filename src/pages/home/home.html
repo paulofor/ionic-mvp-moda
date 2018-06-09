@@ -6,7 +6,7 @@
     </button>
     <ion-title>D Morena</ion-title>
     <ion-buttons end>
-      <button id="notification-button" ion-button icon-only>
+      <button id="notification-button" ion-button icon-only (click)="verCarrinho()">
        <ion-icon name="cart">
           <ion-badge *ngIf="total > 0" id="notifications-badge" color="accent">{{total}}</ion-badge>
         </ion-icon>

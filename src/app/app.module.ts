@@ -23,6 +23,7 @@ import { WelcomePage } from '../pages/welcome/welcome';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { TesteGridPage } from '../pages/teste-grid/teste-grid';
+import { PedidoPage } from '../pages/pedido/pedido';
 
 import localePtBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
@@ -42,7 +43,8 @@ registerLocaleData(localePtBr);
     WelcomePage,
     LoginPage,
     SignupPage,
-    TesteGridPage
+    TesteGridPage,
+    PedidoPage
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,8 @@ registerLocaleData(localePtBr);
     WelcomePage,
     LoginPage,
     SignupPage,
-    TesteGridPage
+    TesteGridPage,
+    PedidoPage
   ],
   providers: [
     StatusBar,
