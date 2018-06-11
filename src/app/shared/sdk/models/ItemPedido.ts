@@ -1,4 +1,7 @@
 /* tslint:disable */
+import {
+  Produto
+} from '../index';
 
 declare var Object: any;
 export interface ItemPedidoInterface {
@@ -6,6 +9,7 @@ export interface ItemPedidoInterface {
   "data_inclusao"?: Date;
   "produtoId"?: number;
   "pedidoId"?: number;
+  produto?: Produto;
 }
 
 export class ItemPedido implements ItemPedidoInterface {
@@ -13,6 +17,7 @@ export class ItemPedido implements ItemPedidoInterface {
   "data_inclusao": Date;
   "produtoId": number;
   "pedidoId": number;
+  produto: Produto;
   constructor(data?: ItemPedidoInterface) {
     Object.assign(this, data);
   }
@@ -64,6 +69,14 @@ export class ItemPedido implements ItemPedidoInterface {
         },
       },
       relations: {
+        produto: {
+          name: 'produto',
+          type: 'Produto',
+          model: 'Produto',
+          relationType: 'belongsTo',
+                  keyFrom: 'produtoId',
+          keyTo: 'id'
+        },
       }
     }
   }
