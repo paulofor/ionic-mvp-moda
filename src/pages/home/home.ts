@@ -3,10 +3,11 @@ import { NavController } from 'ionic-angular';
 
 import { DetalheProdutoPage } from '../detalhe-produto/detalhe-produto';
 import { PedidoPage } from '../pedido/pedido';
-
+import { Storage  } from '@ionic/storage';
 import { Produto } from '../../app/shared/sdk/models/Produto';
 import { ProdutoApi } from '../../app/shared/sdk/services/custom/Produto';
 import { PedidoApi } from '../../app/shared/sdk/services/custom/Pedido';
+import { UsuarioApp } from '../../app/shared/sdk/index';
 
 @Component({
   selector: 'page-home',
@@ -16,14 +17,23 @@ export class HomePage {
 
   produtos: Produto[];
   total: number;
+  usuario: UsuarioApp;
 
-  constructor(public navCtrl: NavController, private servico: ProdutoApi, private pedidoSrv: PedidoApi) {
+  constructor(public navCtrl: NavController, private servico: ProdutoApi, 
+              private storage: Storage, private pedidoSrv: PedidoApi) {
 
   }
+
 
   ionViewWillEnter() {
-    this.carregaQtdePedido();
+    this.storage.get('user').then((val : UsuarioApp) => {
+      console.log('Usuario: ', val);
+      this.usuario = val;
+      this.carregaQtdePedido();
+    });
   }
+
+ 
 
   ngOnInit() {
     this.carregaListaProduto();
@@ -37,7 +47,7 @@ export class HomePage {
       })
   }
   carregaQtdePedido() {
-    this.pedidoSrv.countItemPedidos(1, {"aberto" : true})
+    this.pedidoSrv.countItemPedidos(1)
       .subscribe((quantidade) => {
         console.log('Quantidade carrinho: ', quantidade.count);
         this.total = quantidade.count;

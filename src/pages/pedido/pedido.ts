@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { Storage  } from '@ionic/storage';
 
 import { ItemPedido, UsuarioApp } from '../../app/shared/sdk';
 import { Pedido } from '../../app/shared/sdk';
 
 import { PedidoApi } from '../../app/shared/sdk/services/custom/Pedido';
+
+
 
 /**
  * Generated class for the PedidoPage page.
@@ -29,13 +31,17 @@ export class PedidoPage {
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private pedidoSrv: PedidoApi) {
-      this.carregaListaItemPedido();
+    private pedidoSrv: PedidoApi, private storage: Storage) {
+      //this.carregaListaItemPedido();
 
   }
 
   ionViewWillEnter() {
-    this.carregaListaItemPedido();
+    this.storage.get('user').then((val : UsuarioApp) => {
+      console.log('Usuario: ', val);
+      this.usuario = val;
+      this.carregaPedido();
+    });
   }
 
   calculaTotalPedido() {
@@ -46,7 +52,7 @@ export class PedidoPage {
   }
 
   carregaListaItemPedido() {
-    this.pedidoSrv.getItemPedidos(1,{"include": "produto"})
+    this.pedidoSrv.getItemPedidos(this.pedido.id,{"include": "produto"})
       .subscribe((result: ItemPedido[]) => {
         console.log("Lista: " , result);
         this.listaItemPedido = result;
@@ -54,7 +60,12 @@ export class PedidoPage {
   }
 
   carregaPedido() {
-
+    this.pedidoSrv.find( {"where" : {"usuarioAppId" : this.usuario.id , "aberto" : true} } )
+      .subscribe((result : Pedido[]) => {
+        console.log("Pedido: " , result[0]);
+        this.pedido = result[0];
+        this.carregaListaItemPedido();
+      })
   }
 
 
