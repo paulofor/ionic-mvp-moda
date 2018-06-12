@@ -24,11 +24,11 @@
 
   <ion-item>
     <ion-list>
-      <ion-item  *ngFor="let itemPedido of listaItemProduto">
+      <ion-item  *ngFor="let itemPedido of listaItemPedido">
         <ion-thumbnail item-start>
-          <img src="img/thumbnail-totoro.png">
+          <img src="{{itemPedido.produto.imagem}}">
         </ion-thumbnail>
-        <h2>My Neighbor Totoro</h2>
+        <h2>{{itemPedido.produto.nome}}</h2>
         <p>Hayao Miyazaki • 1988</p>
         <button ion-button clear item-end>View</button>
       </ion-item>

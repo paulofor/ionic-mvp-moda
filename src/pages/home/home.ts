@@ -37,7 +37,7 @@ export class HomePage {
       })
   }
   carregaQtdePedido() {
-    this.pedidoSrv.countItemPedidos(1)
+    this.pedidoSrv.countItemPedidos(1, {"aberto" : true})
       .subscribe((quantidade) => {
         console.log('Quantidade carrinho: ', quantidade.count);
         this.total = quantidade.count;

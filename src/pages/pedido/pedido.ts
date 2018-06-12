@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 
-import { ItemPedido } from '../../app/shared/sdk';
+import { ItemPedido, UsuarioApp } from '../../app/shared/sdk';
 import { Pedido } from '../../app/shared/sdk';
 
 import { PedidoApi } from '../../app/shared/sdk/services/custom/Pedido';
@@ -22,17 +22,20 @@ import { PedidoApi } from '../../app/shared/sdk/services/custom/Pedido';
 export class PedidoPage {
 
 
-  pedido: Pedido;
+  usuario: UsuarioApp;
+  pedido: Pedido = new Pedido();
+  listaItemPedido : ItemPedido[];
   totalPedido: number;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private pedidoSrv: PedidoApi) {
+      this.carregaListaItemPedido();
 
   }
 
   ionViewWillEnter() {
-    this.carregaPedido();
+    this.carregaListaItemPedido();
   }
 
   calculaTotalPedido() {
@@ -42,14 +45,15 @@ export class PedidoPage {
     }
   }
 
-  carregaPedido() {
-    this.pedidoSrv.findByIdItemPedidos(1,{"include": "produto"})
-      .subscribe((result: Pedido) => {
-        console.log("Pedido: " , result);
+  carregaListaItemPedido() {
+    this.pedidoSrv.getItemPedidos(1,{"include": "produto"})
+      .subscribe((result: ItemPedido[]) => {
+        console.log("Lista: " , result);
+        this.listaItemPedido = result;
       })
   }
 
-  carregaItemPedido() {
+  carregaPedido() {
 
   }
 
