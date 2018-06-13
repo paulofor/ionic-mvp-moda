@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage  } from '@ionic/storage';
 
-import { ItemPedido, UsuarioApp } from '../../app/shared/sdk';
+import { ItemPedido, UsuarioApp, UsuarioAppApi } from '../../app/shared/sdk';
 import { Pedido } from '../../app/shared/sdk';
 
 import { PedidoApi } from '../../app/shared/sdk/services/custom/Pedido';
@@ -26,12 +26,12 @@ export class PedidoPage {
 
   usuario: UsuarioApp;
   pedido: Pedido = new Pedido();
-  listaItemPedido : ItemPedido[];
+  //listaItemPedido : ItemPedido[];
   totalPedido: number;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private pedidoSrv: PedidoApi, private storage: Storage) {
+    private pedidoSrv: PedidoApi, private storage: Storage, private usuarioAppSrv : UsuarioAppApi) {
       //this.carregaListaItemPedido();
 
   }
@@ -40,17 +40,28 @@ export class PedidoPage {
     this.storage.get('user').then((val : UsuarioApp) => {
       console.log('Usuario: ', val);
       this.usuario = val;
-      this.carregaPedido();
+      this.carregaPedidoCompleto();
     });
   }
 
+  carregaPedidoCompleto() {
+    this.usuarioAppSrv.getPedidos(this.usuario.id,{"where": {"aberto" : true }, "include" : {"itemPedidos" :["produto"]}})
+      .subscribe((result: Pedido[]) => {
+        console.log('Pedido Corrente: ' , JSON.stringify(result));
+        this.pedido = result[0];
+        this.calculaTotalPedido();
+      })
+  }
+
   calculaTotalPedido() {
-    this.totalPedido = 0;
+    this.pedido.valor_total = 0;
     for (let item of this.pedido.itemPedidos) {
       console.log(item); // 1, "string", false
+      this.pedido.valor_total += item.preco_total;
     }
   }
 
+  /*
   carregaListaItemPedido() {
     this.pedidoSrv.getItemPedidos(this.pedido.id,{"include": "produto"})
       .subscribe((result: ItemPedido[]) => {
@@ -67,6 +78,7 @@ export class PedidoPage {
         this.carregaListaItemPedido();
       })
   }
+  */
 
 
 

@@ -9,8 +9,8 @@ export interface ProdutoInterface {
   "nome"?: string;
   "imagem"?: string;
   "preco"?: number;
+  "ativo"?: boolean;
   "clienteId"?: number;
-  "pedidoId"?: number;
   itemPedidos?: ItemPedido[];
 }
 
@@ -19,8 +19,8 @@ export class Produto implements ProdutoInterface {
   "nome": string;
   "imagem": string;
   "preco": number;
+  "ativo": boolean;
   "clienteId": number;
-  "pedidoId": number;
   itemPedidos: ItemPedido[];
   constructor(data?: ProdutoInterface) {
     Object.assign(this, data);
@@ -71,12 +71,12 @@ export class Produto implements ProdutoInterface {
           name: 'preco',
           type: 'number'
         },
+        "ativo": {
+          name: 'ativo',
+          type: 'boolean'
+        },
         "clienteId": {
           name: 'clienteId',
-          type: 'number'
-        },
-        "pedidoId": {
-          name: 'pedidoId',
           type: 'number'
         },
       },

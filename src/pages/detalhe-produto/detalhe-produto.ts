@@ -44,6 +44,10 @@ export class DetalheProdutoPage {
     let itemPedido: ItemPedido = new ItemPedido();
     itemPedido.pedidoId = this.pedido.id;
     itemPedido.produtoId = this.produto.id;
+    itemPedido.nome_produto = this.produto.nome;
+    itemPedido.preco_produto = this.produto.preco;
+    itemPedido.quantidade_produto = 1;
+    itemPedido.preco_total = itemPedido.preco_produto * itemPedido.quantidade_produto;
     itemPedido.data_inclusao = new Date();
     this.pedidoSrv.createItemPedidos(this.pedido.id, itemPedido)
       .subscribe((result) => {

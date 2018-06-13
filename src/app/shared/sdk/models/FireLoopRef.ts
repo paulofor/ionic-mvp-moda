@@ -1,11 +1,12 @@
 /* tslint:disable */
-import 'rxjs/add/observable/merge';
-import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
+import { merge, Observable, Subject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import 'rxjs/add/operator/merge';
 import { LoopBackFilter, StatFilter } from './index';
 import { SocketConnection } from '../sockets/socket.connections';
+
+
+/* tslint:disable */
+
 /**
  * @class FireLoopRef<T>
  * @author Jonathan Casarrubias <t: johncasarrubias, gh: mean-expert-official>
@@ -158,7 +159,7 @@ export class FireLoopRef<T> {
       request = { filter, parent: this.parent.instance };
     }
     if (event.match(/(value|change|stats)/)) {
-      return Observable.merge(
+      return merge(
         this.pull(event, request),
         this.broadcasts(event, request)
       );

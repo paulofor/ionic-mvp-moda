@@ -7,6 +7,10 @@ declare var Object: any;
 export interface ItemPedidoInterface {
   "id"?: number;
   "data_inclusao"?: Date;
+  "preco_produto"?: number;
+  "quantidade_produto"?: number;
+  "preco_total"?: number;
+  "nome_produto"?: string;
   "produtoId"?: number;
   "pedidoId"?: number;
   produto?: Produto;
@@ -15,6 +19,10 @@ export interface ItemPedidoInterface {
 export class ItemPedido implements ItemPedidoInterface {
   "id": number;
   "data_inclusao": Date;
+  "preco_produto": number;
+  "quantidade_produto": number;
+  "preco_total": number;
+  "nome_produto": string;
   "produtoId": number;
   "pedidoId": number;
   produto: Produto;
@@ -58,6 +66,22 @@ export class ItemPedido implements ItemPedidoInterface {
         "data_inclusao": {
           name: 'data_inclusao',
           type: 'Date'
+        },
+        "preco_produto": {
+          name: 'preco_produto',
+          type: 'number'
+        },
+        "quantidade_produto": {
+          name: 'quantidade_produto',
+          type: 'number'
+        },
+        "preco_total": {
+          name: 'preco_total',
+          type: 'number'
+        },
+        "nome_produto": {
+          name: 'nome_produto',
+          type: 'string'
         },
         "produtoId": {
           name: 'produtoId',

@@ -1,6 +1,5 @@
 /* tslint:disable */
 import {
-  Produto,
   ItemPedido
 } from '../index';
 
@@ -8,18 +7,20 @@ declare var Object: any;
 export interface PedidoInterface {
   "id"?: number;
   "data_inicio"?: Date;
+  "data_fechamento"?: Date;
   "aberto"?: boolean;
+  "valor_total"?: number;
   "usuarioAppId"?: number;
-  produtos?: Produto[];
   itemPedidos?: ItemPedido[];
 }
 
 export class Pedido implements PedidoInterface {
   "id": number;
   "data_inicio": Date;
+  "data_fechamento": Date;
   "aberto": boolean;
+  "valor_total": number;
   "usuarioAppId": number;
-  produtos: Produto[];
   itemPedidos: ItemPedido[];
   constructor(data?: PedidoInterface) {
     Object.assign(this, data);
@@ -62,9 +63,17 @@ export class Pedido implements PedidoInterface {
           name: 'data_inicio',
           type: 'Date'
         },
+        "data_fechamento": {
+          name: 'data_fechamento',
+          type: 'Date'
+        },
         "aberto": {
           name: 'aberto',
           type: 'boolean'
+        },
+        "valor_total": {
+          name: 'valor_total',
+          type: 'number'
         },
         "usuarioAppId": {
           name: 'usuarioAppId',
@@ -72,14 +81,6 @@ export class Pedido implements PedidoInterface {
         },
       },
       relations: {
-        produtos: {
-          name: 'produtos',
-          type: 'Produto[]',
-          model: 'Produto',
-          relationType: 'hasMany',
-                  keyFrom: 'id',
-          keyTo: 'pedidoId'
-        },
         itemPedidos: {
           name: 'itemPedidos',
           type: 'ItemPedido[]',
