@@ -1,8 +1,9 @@
 /* tslint:disable */
-import { merge, Observable, Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { LoopBackFilter, StatFilter } from './index';
 import { SocketConnection } from '../sockets/socket.connections';
+import { merge } from 'rxjs/operator/merge'
 
 
 /* tslint:disable */
