@@ -5,8 +5,10 @@ import { LoopBackAuth } from './auth.service';
 import { FireLoop } from '../../models/FireLoop';
 import { SocketConnection } from '../../sockets/socket.connections';
 import { SDKModels } from '../custom/SDKModels';
-import { Observable, Subject, Subscription } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { share } from 'rxjs/operators';
+import { Subject } from 'rxjs/Subject';
+import { Subscription } from 'rxjs/Subscription';
 /**
 * @author Jonathan Casarrubias <twitter:@johncasarrubias> <github:@johncasarrubias>
 * @module RealTime

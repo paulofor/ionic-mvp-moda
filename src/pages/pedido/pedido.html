@@ -17,20 +17,32 @@
 
 <ion-content padding>
 
-  <ion-item>
+  <ion-item no-padding>
     <span item-begin>Total</span>
-    <span item-end>R$ 90,00</span>
+    <span item-end>{{pedido.valor_total | currency : 'R$':'code'}}</span>
   </ion-item>
 
-  <ion-item>
-    <ion-list>
-      <ion-item  *ngFor="let itemPedido of pedido.itemPedidos">
-        <ion-thumbnail item-start>
+  <ion-item no-padding>
+    <ion-list no-padding>
+      <ion-item *ngFor="let itemPedido of pedido.itemPedidos" no-padding>
+        <ion-thumbnail item-start no-padding>
           <img src="{{itemPedido.produto.imagem}}">
         </ion-thumbnail>
-        <h2>{{itemPedido.produto.nome}}</h2>
-        <p>Hayao Miyazaki • 1988</p>
-        <button ion-button clear item-end>View</button>
+        <div class="row" no-padding>
+          <h2 class="col" no-padding>{{itemPedido.nome_produto}}</h2>
+          <p  class="col" no-padding>{{itemPedido.preco_total | currency : 'R$':'code'}}</p>
+        </div>
+        <div class="row" no-padding>
+          <ion-label no-padding>Qtd</ion-label>
+          <ion-select no-padding>
+            <ion-option selected value="1">1</ion-option>
+            <ion-option value="2">2</ion-option>
+            <ion-option value="3">3</ion-option>
+            <ion-option value="4">4</ion-option>
+            <ion-option value="5">5</ion-option>
+            <ion-option value="6">6</ion-option>
+          </ion-select>
+        </div>
       </ion-item>
     </ion-list>
   </ion-item>

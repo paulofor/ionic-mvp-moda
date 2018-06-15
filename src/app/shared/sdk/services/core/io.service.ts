@@ -1,5 +1,6 @@
 /* tslint:disable */
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
 
 export class IO {
 
