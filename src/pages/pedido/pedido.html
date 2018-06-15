@@ -28,21 +28,28 @@
         <ion-thumbnail item-start no-padding>
           <img src="{{itemPedido.produto.imagem}}">
         </ion-thumbnail>
-        <div class="row" no-padding>
-          <h2 class="col" no-padding>{{itemPedido.nome_produto}}</h2>
-          <p  class="col" no-padding>{{itemPedido.preco_total | currency : 'R$':'code'}}</p>
-        </div>
-        <div class="row" no-padding>
-          <ion-label no-padding>Qtd</ion-label>
-          <ion-select no-padding>
-            <ion-option selected value="1">1</ion-option>
-            <ion-option value="2">2</ion-option>
-            <ion-option value="3">3</ion-option>
-            <ion-option value="4">4</ion-option>
-            <ion-option value="5">5</ion-option>
-            <ion-option value="6">6</ion-option>
-          </ion-select>
-        </div>
+        <ion-grid item-end>
+          <ion-row no-padding>
+            <ion-col no-padding>{{itemPedido.nome_produto}}</ion-col>
+            <ion-col no-padding>{{itemPedido.preco_total | currency : 'R$':'code'}}</ion-col>
+          </ion-row>
+          <ion-row no-padding>
+            <ion-col no-padding>
+              <ion-label no-padding>Qtd</ion-label>
+              <ion-select no-padding>
+                <ion-option selected value="1">1</ion-option>
+                <ion-option value="2">2</ion-option>
+                <ion-option value="3">3</ion-option>
+                <ion-option value="4">4</ion-option>
+                <ion-option value="5">5</ion-option>
+                <ion-option value="6">6</ion-option>
+              </ion-select>
+            </ion-col>
+            
+          </ion-row>
+        </ion-grid>
+
+
       </ion-item>
     </ion-list>
   </ion-item>
