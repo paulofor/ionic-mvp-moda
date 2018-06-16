@@ -61,6 +61,21 @@ export class PedidoPage {
     }
   }
 
+  fechaPedido() {
+    this.pedido.data_fechamento = new Date();
+    this.pedido.aberto = false;
+    this.pedidoSrv.updateAttributes(this.pedido.id, this.pedido)
+      .subscribe((pedido) => {
+      console.log("Atualizado", pedido);
+    })
+  }
+
+  telaPedidoFinalizado(pedido) {
+    this.navCtrl.push(DetalheProdutoPage, {
+      item: pedido.id,
+    })
+  }
+
   /*
   carregaListaItemPedido() {
     this.pedidoSrv.getItemPedidos(this.pedido.id,{"include": "produto"})

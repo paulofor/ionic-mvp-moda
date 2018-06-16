@@ -15,43 +15,77 @@
 </ion-header>
 
 
-<ion-content padding>
 
-  <ion-item no-padding>
+
+<ion-content class="list-avatar-page">
+  <ion-item>
     <span item-begin>Total</span>
     <span item-end>{{pedido.valor_total | currency : 'R$':'code'}}</span>
   </ion-item>
 
-  <ion-item no-padding>
-    <ion-list no-padding>
-      <ion-item *ngFor="let itemPedido of pedido.itemPedidos" no-padding>
-        <ion-thumbnail item-start no-padding>
-          <img src="{{itemPedido.produto.imagem}}">
-        </ion-thumbnail>
-        <ion-grid item-end>
-          <ion-row no-padding>
-            <ion-col no-padding>{{itemPedido.nome_produto}}</ion-col>
-            <ion-col no-padding>{{itemPedido.preco_total | currency : 'R$':'code'}}</ion-col>
-          </ion-row>
-          <ion-row no-padding>
-            <ion-col no-padding>
-              <ion-label no-padding>Qtd</ion-label>
-              <ion-select no-padding>
-                <ion-option selected value="1">1</ion-option>
-                <ion-option value="2">2</ion-option>
-                <ion-option value="3">3</ion-option>
-                <ion-option value="4">4</ion-option>
-                <ion-option value="5">5</ion-option>
-                <ion-option value="6">6</ion-option>
-              </ion-select>
-            </ion-col>
-            
-          </ion-row>
-        </ion-grid>
+  <!--
+  <ion-row *ngFor="let itemPedido of pedido.itemPedidos">
+    <ion-item >
+      <ion-avatar item-left>
+        <img src="{{itemPedido.produto.imagem}}">
+      </ion-avatar>
+      {{itemPedido.nome_produto}}
+      <ion-icon item-right name="remove-circle" ></ion-icon>
+      <p item-right>1</p>
+      <ion-icon item-right name="add-circle" ></ion-icon>
+    </ion-item>
+  </ion-row>
+  -->
 
-
-      </ion-item>
-    </ion-list>
+  <!--
+<ion-row *ngFor="let itemPedido of pedido.itemPedidos">
+<ion-item (click)="openPage(item)">
+    <ion-avatar item-left>
+      <img [src]="item.url">
+    </ion-avatar>
+    {{item.name}}
   </ion-item>
+  </ion-row>
+-->
+
+
+  <ion-list>
+    <ion-item *ngFor="let itemPedido of pedido.itemPedidos">
+      <ion-thumbnail item-start>
+        <img src="{{itemPedido.produto.imagem}}">
+      </ion-thumbnail>
+      <h3 text-wrap>{{itemPedido.nome_produto}}</h3>
+      <h4>{{itemPedido.preco_total | currency : 'R$':'code'}}</h4>
+        <ion-icon item-right name="remove-circle"></ion-icon>
+        <p item-right>{{itemPedido.quantidade_produto}}</p>
+        <ion-icon item-right name="add-circle"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+
+  <!--
+  <ion-list #dataList>
+    <ion-item-group>
+      <ion-item-sliding *ngFor="let itemPedido of pedido.itemPedidos" #slidingItem>
+        <ion-item>
+          <ion-avatar item-left>
+            <img src="{{itemPedido.produto.imagem}}">
+          </ion-avatar>
+          {{itemPedido.nome_produto}}
+
+          <ion-item-options>
+            <button ion-button color="danger">
+              Delete
+            </button>
+          </ion-item-options>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-item-group>
+  </ion-list>
+-->
+
+<button ion-button round color="royal" (click)="fechaPedido()" block style="font-weight:500;">
+  Fechar Pedido
+</button>
 
 </ion-content>
