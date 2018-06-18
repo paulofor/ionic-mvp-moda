@@ -17,7 +17,8 @@ export class HomePage {
 
   produtos: Produto[];
   total: number;
-  usuario: UsuarioApp;
+  idPedido: number;
+  //usuario: UsuarioApp;
 
   constructor(public navCtrl: NavController, private servico: ProdutoApi, 
               private storage: Storage, private pedidoSrv: PedidoApi) {
@@ -26,17 +27,19 @@ export class HomePage {
 
 
   ionViewWillEnter() {
-    this.storage.get('user').then((val : UsuarioApp) => {
-      console.log('Usuario: ', val);
-      this.usuario = val;
-      this.carregaQtdePedido();
-    });
+    this.obtemIdPedidoMemoria();
   }
-
- 
 
   ngOnInit() {
     this.carregaListaProduto();
+  }
+
+  obtemIdPedidoMemoria() {
+    this.storage.get('idPedido').then((id : number) => {
+      console.log('IdPedido: ', id);
+      this.idPedido = id;
+      this.carregaQtdePedido();
+    });
   }
 
   carregaListaProduto() {
@@ -47,7 +50,7 @@ export class HomePage {
       })
   }
   carregaQtdePedido() {
-    this.pedidoSrv.countItemPedidos(1)
+    this.pedidoSrv.countItemPedidos(this.idPedido)
       .subscribe((quantidade) => {
         console.log('Quantidade carrinho: ', quantidade.count);
         this.total = quantidade.count;

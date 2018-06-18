@@ -54,7 +54,8 @@ export class LoginPage {
   }
 
   mudaTela() {
-    this.navCtrl.push(HomePage, {}, {animate: false});
+    this.guardaPedido(this.pedido);
+    this.navCtrl.push(HomePage, {}, {animate: true});
   }
 
 
@@ -68,7 +69,7 @@ export class LoginPage {
       console.log("Erro:" + err.message);
       this.mudaTela();
     }).subscribe((e: any) => {
-      console.log(JSON.stringify(e));
+      console.log("Resposta Pedido Criado: " , JSON.stringify(e));
     });
   }
 
@@ -86,5 +87,11 @@ export class LoginPage {
           }
       })
   }
+
+  guardaPedido(pedido : Pedido) {
+    this.storage.set('idPedido',pedido.id);
+  }
+
+ 
   
 }

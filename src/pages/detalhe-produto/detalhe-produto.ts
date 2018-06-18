@@ -7,6 +7,7 @@ import { Pedido } from '../../app/shared/sdk/models/Pedido';
 import { PedidoApi } from '../../app/shared/sdk/services/custom/Pedido';
 import { UsuarioAppApi } from '../../app/shared/sdk/services/custom/UsuarioApp';
 import { ItemPedido } from '../../app/shared/sdk';
+import { Storage  } from '@ionic/storage';
 
 /**
  * Generated class for the DetalheProdutoPage page.
@@ -25,15 +26,16 @@ export class DetalheProdutoPage {
   produto: Produto;
   pedido: Pedido;
 
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private toastCtrl: ToastController, private usuarioSrv: UsuarioAppApi,
+    private toastCtrl: ToastController, private storage: Storage, private usuarioSrv: UsuarioAppApi,
     private pedidoSrv: PedidoApi) {
     
   }
 
   ngOnInit() {
     this.produto = this.navParams.get('item');
-    this.recuperaPedido();
+    this.recuperaPedido(1);
   }
 
   ionViewDidLoad() {
@@ -61,12 +63,19 @@ export class DetalheProdutoPage {
       })
   }
 
-  recuperaPedido() {
-    this.usuarioSrv.getPedidos(1)
+  recuperaPedido(idPedido: number) {
+    this.usuarioSrv.getPedidos(idPedido)
       .subscribe((valor: Pedido[]) => {
         this.pedido = valor[0];
         console.log('Pedido:' + JSON.stringify(this.pedido));
       })
+  }
+
+  obtemIdPedidoMemoria() {
+    this.storage.get('idPedido').then((id : number) => {
+      console.log('IdPedido: ', id);
+      this.recuperaPedido(id);
+    });
   }
 
 }

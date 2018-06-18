@@ -6,8 +6,8 @@ import { ItemPedido, UsuarioApp, UsuarioAppApi } from '../../app/shared/sdk';
 import { Pedido } from '../../app/shared/sdk';
 
 import { PedidoApi } from '../../app/shared/sdk/services/custom/Pedido';
-
-
+import { PedidoFechadoPage } from '../pedido-fechado/pedido-fechado';
+ 
 
 /**
  * Generated class for the PedidoPage page.
@@ -67,11 +67,12 @@ export class PedidoPage {
     this.pedidoSrv.updateAttributes(this.pedido.id, this.pedido)
       .subscribe((pedido) => {
       console.log("Atualizado", pedido);
+      this.telaPedidoFinalizado(pedido);
     })
   }
 
   telaPedidoFinalizado(pedido) {
-    this.navCtrl.push(DetalheProdutoPage, {
+    this.navCtrl.push(PedidoFechadoPage, {
       item: pedido.id,
     })
   }
