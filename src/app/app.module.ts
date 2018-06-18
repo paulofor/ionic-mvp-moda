@@ -24,6 +24,7 @@ import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { TesteGridPage } from '../pages/teste-grid/teste-grid';
 import { PedidoPage } from '../pages/pedido/pedido';
+import { PedidoFechadoPage } from '../pages/pedido-fechado/pedido-fechado';
 
 import localePtBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
@@ -44,7 +45,8 @@ registerLocaleData(localePtBr);
     LoginPage,
     SignupPage,
     TesteGridPage,
-    PedidoPage
+    PedidoPage,
+    PedidoFechadoPage
   ],
   imports: [
     BrowserModule,
@@ -62,7 +64,8 @@ registerLocaleData(localePtBr);
     LoginPage,
     SignupPage,
     TesteGridPage,
-    PedidoPage
+    PedidoPage,
+    PedidoFechadoPage
   ],
   providers: [
     StatusBar,

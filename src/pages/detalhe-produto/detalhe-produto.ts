@@ -63,19 +63,21 @@ export class DetalheProdutoPage {
       })
   }
 
-  recuperaPedido(idPedido: number) {
-    this.usuarioSrv.getPedidos(idPedido)
+  recuperaPedido(idUsuario: number) {
+    this.usuarioSrv.getPedidos(idUsuario)
       .subscribe((valor: Pedido[]) => {
         this.pedido = valor[0];
         console.log('Pedido:' + JSON.stringify(this.pedido));
       })
   }
 
+  /*
   obtemIdPedidoMemoria() {
     this.storage.get('idPedido').then((id : number) => {
       console.log('IdPedido: ', id);
       this.recuperaPedido(id);
     });
   }
+  */
 
 }
