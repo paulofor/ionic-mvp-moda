@@ -53,7 +53,7 @@ export class LoginPage {
     this.verificaPedidoAberto();
   }
 
-  mudaTela() {
+    mudaTela() {
     this.guardaPedido(this.pedido);
     this.navCtrl.push(HomePage, {}, { animate: true });
   }
@@ -89,6 +89,8 @@ export class LoginPage {
   }
 
   guardaPedido(pedido: Pedido) {
+    console.log('Pedido para a memoria:' , JSON.stringify(pedido));
+    console.log('idPedido' , pedido.id);
     this.storage.set('idPedido', pedido.id);
   }
 

@@ -24,7 +24,7 @@ import { Storage  } from '@ionic/storage';
 export class DetalheProdutoPage {
 
   produto: Produto;
-  pedido: Pedido;
+  idPedidoAtual: number;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -35,7 +35,8 @@ export class DetalheProdutoPage {
 
   ngOnInit() {
     this.produto = this.navParams.get('item');
-    this.recuperaPedido(1);
+    //this.recuperaPedido(1);
+    this.obtemIdPedidoMemoria();
   }
 
   ionViewDidLoad() {
@@ -44,14 +45,16 @@ export class DetalheProdutoPage {
 
   adicionaProduto() {
     let itemPedido: ItemPedido = new ItemPedido();
-    itemPedido.pedidoId = this.pedido.id;
+    itemPedido.pedidoId = this.idPedidoAtual;
     itemPedido.produtoId = this.produto.id;
     itemPedido.nome_produto = this.produto.nome;
     itemPedido.preco_produto = this.produto.preco;
     itemPedido.quantidade_produto = 1;
     itemPedido.preco_total = itemPedido.preco_produto * itemPedido.quantidade_produto;
     itemPedido.data_inclusao = new Date();
-    this.pedidoSrv.createItemPedidos(this.pedido.id, itemPedido)
+    console.log('Item Pedido que vai ser salvo: ' , JSON.stringify(itemPedido));
+
+    this.pedidoSrv.createItemPedidos( itemPedido.pedidoId, itemPedido)
       .subscribe((result) => {
         if (result) {
           this.toastCtrl.create({
@@ -63,6 +66,9 @@ export class DetalheProdutoPage {
       })
   }
 
+  /* Não recupera pedidos abertos !!!! */
+
+  /*
   recuperaPedido(idUsuario: number) {
     this.usuarioSrv.getPedidos(idUsuario)
       .subscribe((valor: Pedido[]) => {
@@ -70,14 +76,15 @@ export class DetalheProdutoPage {
         console.log('Pedido:' + JSON.stringify(this.pedido));
       })
   }
-
-  /*
-  obtemIdPedidoMemoria() {
-    this.storage.get('idPedido').then((id : number) => {
-      console.log('IdPedido: ', id);
-      this.recuperaPedido(id);
-    });
-  }
   */
 
+
+  obtemIdPedidoMemoria() {
+    this.storage.get('idPedido').then((id : number) => {
+      console.log('IdPedido Recuperado: ', id);
+      this.idPedidoAtual = id;
+    });
+  }
+  
+  
 }
